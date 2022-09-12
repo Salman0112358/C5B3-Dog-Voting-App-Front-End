@@ -1,7 +1,7 @@
-import { greet } from "./utils/greet";
+import DogLeaderboard from "./components/DogLeaderboard";
 
 function App(): JSX.Element {
-  return <h1>{greet("Test")}</h1>;
+  return <DogLeaderboard />;
 }
 
 export default App;
