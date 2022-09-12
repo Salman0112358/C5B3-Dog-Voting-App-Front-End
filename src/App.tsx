@@ -2,6 +2,7 @@ import DogLeaderboard from "./components/DogLeaderboard";
 import {useEffect, useState} from "react";
 import {IDog} from "./utils/types";
 import serverUrl from "./utils/serverUrl";
+import TopThreeDogs from "./components/TopThreeDogs";
 
 function App(): JSX.Element {
   const [topTenDogs, setTopTenDogs] = useState<IDog[]>([]);
@@ -18,7 +19,12 @@ function App(): JSX.Element {
     getDogsFromServer();
   }, []);
   
-  return <DogLeaderboard topTenDogs={topTenDogs} />;
+  return (
+    <div>
+      <DogLeaderboard topTenDogs={topTenDogs} />
+      <TopThreeDogs topTenDogs={topTenDogs} />
+    </div>
+  );
 }
 
 export default App;
