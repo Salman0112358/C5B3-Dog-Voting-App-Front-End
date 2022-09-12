@@ -1,22 +1,13 @@
-import serverUrl from "../utils/serverUrl";
-import { useEffect, useState } from "react";
+// import serverUrl from "../utils/serverUrl";
+// import { useEffect, useState } from "react";
 import { IDog } from "../utils/types";
 
+interface IProps {
+  topTenDogs: IDog[]
+}
+
 //Display top 10 dogs with name and number of votes
-export default function DogLeaderboard(): JSX.Element {
-  const [topTenDogs, setTopTenDogs] = useState<IDog[]>([]);
-  async function getDogsFromServer(): Promise<void> {
-    try {
-      const getTenDogs = await fetch(`${serverUrl}/top10`);
-      const dogsJson: IDog[] = await getTenDogs.json();
-      setTopTenDogs(dogsJson);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  useEffect(() => {
-    getDogsFromServer();
-  }, []);
+export default function DogLeaderboard({topTenDogs}: IProps): JSX.Element {
   return (
     <div>
       {topTenDogs.map((dog) => (
