@@ -10,6 +10,7 @@ interface IProps {
 export default function DogLeaderboard({topTenDogs}: IProps): JSX.Element {
   return (
     <div>
+      <h3>Dog Leaderboard</h3>
       {topTenDogs.map((dog) => (
         <p key={dog.dog_id}>
           {dog.breed} {dog.votes}
