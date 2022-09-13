@@ -9,11 +9,16 @@ interface IProps {
   setTopTenDogs: React.Dispatch<React.SetStateAction<IDog[]>>;
 }
 
+const audio = new Audio(
+  "http://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg"
+);
+
 export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
   const [dogComparer, setDogComparer] = useState<[IDog, IDog]>([
     placeholderDog,
     placeholderDog,
   ]);
+
   async function setStateToTwoRandomDogs(): Promise<void> {
     try {
       const dogOne = await fetch(`${serverUrl}/random`);
@@ -55,6 +60,7 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
       />
       <button
         onClick={async () => {
+          audio.play();
           await handleVoteForDog(dogComparer[0].breed);
           await getDogsFromServer(setTopTenDogs);
         }}
@@ -69,6 +75,7 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
       />
       <button
         onClick={async () => {
+          audio.play();
           await handleVoteForDog(dogComparer[1].breed);
           await getDogsFromServer(setTopTenDogs);
         }}
