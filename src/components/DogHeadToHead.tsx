@@ -50,7 +50,7 @@ export default function DogHeadToHead(): JSX.Element {
       />
       <button
         onClick={() => handleVoteForDog(dogComparer[0].breed)}
-        className="vote"
+        className="voteDog"
       >
         vote for {dogComparer[0].breed}
       </button>
@@ -61,7 +61,7 @@ export default function DogHeadToHead(): JSX.Element {
       />
       <button
         onClick={() => handleVoteForDog(dogComparer[1].breed)}
-        className="vote"
+        className="voteDog"
       >
         vote for {dogComparer[1].breed}
       </button>
