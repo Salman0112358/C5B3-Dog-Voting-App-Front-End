@@ -1,6 +1,7 @@
 export interface IDog {
-  dog_id: number;
+  dog_id?: number;
   breed: string;
-  votes: number;
+  votes?: number;
   image: string;
 }
+

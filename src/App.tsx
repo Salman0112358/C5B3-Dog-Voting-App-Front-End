@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {IDog} from "./utils/types";
 import serverUrl from "./utils/serverUrl";
 import TopThreeDogs from "./components/TopThreeDogs";
+import DogHeadToHead from "./components/DogHeadToHead";
 
 function App(): JSX.Element {
   const [topTenDogs, setTopTenDogs] = useState<IDog[]>([]);
@@ -21,6 +22,7 @@ function App(): JSX.Element {
   
   return (
     <div>
+      <DogHeadToHead />
       <DogLeaderboard topTenDogs={topTenDogs} />
       <TopThreeDogs topTenDogs={topTenDogs} />
     </div>

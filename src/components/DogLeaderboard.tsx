@@ -11,8 +11,8 @@ export default function DogLeaderboard({topTenDogs}: IProps): JSX.Element {
   return (
     <div>
       <h3>Dog Leaderboard</h3>
-      {topTenDogs.map((dog) => (
-        <p key={dog.dog_id}>
+      {topTenDogs.map((dog, index) => (
+        <p key={dog.dog_id ?? index}>
           {dog.breed} {dog.votes}
         </p>
       ))}
