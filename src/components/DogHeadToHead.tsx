@@ -27,12 +27,11 @@ export default function DogHeadToHead(): JSX.Element {
 
   const handleVoteForDog = async (breedOfDog: string) => {
     try {
-      console.log({breedOfDog})
+      console.log({ breedOfDog });
       await axios.post(`${serverUrl}/dog`, { breed: breedOfDog });
       setStateToTwoRandomDogs();
     } catch (error) {
-      console.log(error)
-      
+      console.log(error);
     }
   };
 
