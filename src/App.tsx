@@ -14,7 +14,7 @@ function App(): JSX.Element {
 
   return (
     <div>
-      <DogHeadToHead />
+      <DogHeadToHead setTopTenDogs={setTopTenDogs} />
       <DogLeaderboard topTenDogs={topTenDogs} setTopTenDogs={setTopTenDogs} />
       <TopThreeDogs topTenDogs={topTenDogs} />
     </div>
