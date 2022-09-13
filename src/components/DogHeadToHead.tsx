@@ -3,8 +3,13 @@ import { IDog } from "../utils/types";
 import placeholderDog from "../utils/placeholderDog";
 import serverUrl from "../utils/serverUrl";
 import axios from "axios";
+import getDogsFromServer from "../utils/getDogsFromServer";
 
-export default function DogHeadToHead(): JSX.Element {
+interface IProps {
+  setTopTenDogs: React.Dispatch<React.SetStateAction<IDog[]>>;
+}
+
+export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
   const [dogComparer, setDogComparer] = useState<[IDog, IDog]>([
     placeholderDog,
     placeholderDog,
@@ -44,7 +49,10 @@ export default function DogHeadToHead(): JSX.Element {
         alt={`Dog of breed ${dogComparer[0].breed}`}
       />
       <button
-        onClick={() => handleVoteForDog(dogComparer[0].breed)}
+        onClick={async () => {
+          await handleVoteForDog(dogComparer[0].breed);
+          await getDogsFromServer(setTopTenDogs);
+        }}
         className="vote"
       >
         vote for {dogComparer[0].breed}
@@ -55,7 +63,10 @@ export default function DogHeadToHead(): JSX.Element {
         alt={`Dog of breed ${dogComparer[1].breed}`}
       />
       <button
-        onClick={() => handleVoteForDog(dogComparer[1].breed)}
+        onClick={async () => {
+          await handleVoteForDog(dogComparer[1].breed);
+          await getDogsFromServer(setTopTenDogs);
+        }}
         className="vote"
       >
         vote for {dogComparer[1].breed}
