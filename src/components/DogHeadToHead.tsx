@@ -13,9 +13,14 @@ export default function DogHeadToHead(): JSX.Element {
     try {
       const dogOne = await fetch(`${serverUrl}/random`);
       const dogOneJson: IDog = await dogOne.json();
-      const dogTwo = await fetch(`${serverUrl}/random`);
-      const dogTwoJson: IDog = await dogTwo.json();
+      let dogTwo = await fetch(`${serverUrl}/random`);
+      let dogTwoJson: IDog = await dogTwo.json();
       setDogComparer([dogOneJson, dogTwoJson]);
+      while (dogOneJson.breed === dogTwoJson.breed) {
+        dogTwo = await fetch(`${serverUrl}/random`);
+        dogTwoJson = await dogTwo.json();
+        setDogComparer([dogOneJson, dogTwoJson]);
+      }
     } catch (error) {
       console.log(error);
     }
