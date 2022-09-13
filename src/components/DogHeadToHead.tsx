@@ -9,16 +9,15 @@ interface IProps {
   setTopTenDogs: React.Dispatch<React.SetStateAction<IDog[]>>;
 }
 
-const audio = new Audio(
-  "http://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg"
-);
+const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 
 export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
   const [dogComparer, setDogComparer] = useState<[IDog, IDog]>([
     placeholderDog,
     placeholderDog,
   ]);
-
+  const [voteCount, setVoteCount] = useState<number>(0);
+  const [totalVotes, setTotalVotes] = useState<number>(0);
   async function setStateToTwoRandomDogs(): Promise<void> {
     try {
       const dogOne = await fetch(`${serverUrl}/random`);
@@ -38,6 +37,7 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
 
   useEffect(() => {
     setStateToTwoRandomDogs();
+    getNumberOfVotes();
   }, []);
 
   const handleVoteForDog = async (breedOfDog: string) => {
@@ -50,6 +50,14 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
     }
   };
 
+  async function getNumberOfVotes(): Promise<void> {
+    const numberOfVotes: { totalVotes: number } = (
+      await axios.get(`${serverUrl}/totalVotes`)
+    ).data;
+    console.log(numberOfVotes);
+    setTotalVotes(numberOfVotes.totalVotes);
+  }
+
   return (
     <div>
       <h1>Pick your favourite dog!</h1>
@@ -61,6 +69,8 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
       <button
         onClick={async () => {
           audio.play();
+          setVoteCount((state) => state + 1);
+          await getNumberOfVotes();
           await handleVoteForDog(dogComparer[0].breed);
           await getDogsFromServer(setTopTenDogs);
         }}
@@ -76,6 +86,8 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
       <button
         onClick={async () => {
           audio.play();
+          setVoteCount((state) => state + 1);
+          await getNumberOfVotes();
           await handleVoteForDog(dogComparer[1].breed);
           await getDogsFromServer(setTopTenDogs);
         }}
@@ -83,6 +95,10 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
       >
         vote for {dogComparer[1].breed}
       </button>
+      <p>
+        You have voted {voteCount} time{voteCount === 1 ? "" : "s"} out of{" "}
+        {totalVotes} total votes
+      </p>
     </div>
   );
 }
