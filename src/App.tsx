@@ -1,6 +1,6 @@
 import DogLeaderboard from "./components/DogLeaderboard";
-import {useEffect, useState} from "react";
-import {IDog} from "./utils/types";
+import { useEffect, useState } from "react";
+import { IDog } from "./utils/types";
 import serverUrl from "./utils/serverUrl";
 import TopThreeDogs from "./components/TopThreeDogs";
 import DogHeadToHead from "./components/DogHeadToHead";
@@ -19,7 +19,7 @@ function App(): JSX.Element {
   useEffect(() => {
     getDogsFromServer();
   }, []);
-  
+
   return (
     <div>
       <DogHeadToHead />

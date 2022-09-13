@@ -4,4 +4,3 @@ export interface IDog {
   votes?: number;
   image: string;
 }
-
