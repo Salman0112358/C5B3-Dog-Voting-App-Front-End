@@ -7,7 +7,7 @@ export default function DogHeadToHead(): JSX.Element {
   const [dogComparer, setDogComparer] = useState<[IDog, IDog]>([
     placeholderDog,
     placeholderDog,
-]);
+  ]);
   async function setStateToTwoRandomDogs(): Promise<void> {
     const dogOne = await fetch(`${serverUrl}/random`);
     const dogOneJson: IDog = await dogOne.json();
@@ -15,7 +15,7 @@ export default function DogHeadToHead(): JSX.Element {
     const dogTwoJson: IDog = await dogTwo.json();
     setDogComparer([dogOneJson, dogTwoJson]);
   }
-  
+
   useEffect(() => {
     setStateToTwoRandomDogs();
   }, []);
