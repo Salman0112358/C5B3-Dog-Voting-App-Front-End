@@ -5,29 +5,11 @@ import serverUrl from "../utils/serverUrl";
 import axios from "axios";
 import getDogsFromServer from "../utils/getDogsFromServer";
 
-//socket
-import io, { Socket } from 'socket.io-client';
-
-
 interface IProps {
   setTopTenDogs: React.Dispatch<React.SetStateAction<IDog[]>>;
 }
 
-// const newSocket = io('https://c5b3-dog-voting-app.herokuapp.com');
-  const newSocket = io('http://localhost:4000/')
-  console.log(newSocket);
-  
-  newSocket.on("hello", () => {
-    console.log("we got a message")
-  });
 
-  newSocket.on("time", (arg1) => {
-    console.log("do something, ANYTHING!", arg1)
-  });
-
-  newSocket.on("chatMessage", (arg1) => {
-    console.log("chat messages has been received", arg1);
-  })
 
 const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 
@@ -95,17 +77,14 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
     setTotalVotes(numberOfVotes.totalVotes);
   }
 
-  const handleSocketClick = () => {
+  // const handleSocketClick = () => {
 
-    newSocket.emit("squirrel!", Math.random());
-    console.log("I have been clicked!", new Date());
-  }
-
-  
+  //   newSocket.emit("squirrel!", Math.random());
+  //   console.log("I have been clicked!", new Date());
+  // }
 
   return (
     <div>
-      <button onClick={handleSocketClick}>Send Socket io Message</button>
       <h1>Pick your favourite dog!</h1>
       <img
         className="dog-image"
