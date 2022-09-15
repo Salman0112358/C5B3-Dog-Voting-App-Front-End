@@ -6,14 +6,18 @@ interface IProps {
 
 export default function TopThreeDogs({ topTenDogs }: IProps): JSX.Element {
   return (
-    <div>
+    <div className="top_three_container">
       <h3>Top Three Dogs</h3>
       {topTenDogs.slice(0, 3).map((dog, index) => (
-        <div key={dog.dog_id ?? index}>
+        <div key={dog.dog_id ?? index} className="top_three_labels">
           <p>
             {dog.breed} {dog.votes}
           </p>
-          <img src={dog.image} alt={`A ${dog.breed}`} />
+          <img
+            className="dog-image_top_three"
+            src={dog.image}
+            alt={`A ${dog.breed}`}
+          />
         </div>
       ))}
     </div>

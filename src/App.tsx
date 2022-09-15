@@ -5,6 +5,11 @@ import TopThreeDogs from "./components/TopThreeDogs";
 import DogHeadToHead from "./components/DogHeadToHead";
 import getDogsFromServer from "./utils/getDogsFromServer";
 
+/// boot strap grid
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 function App(): JSX.Element {
   const [topTenDogs, setTopTenDogs] = useState<IDog[]>([]);
 
@@ -13,11 +18,26 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <div>
-      <DogHeadToHead setTopTenDogs={setTopTenDogs} />
-      <DogLeaderboard topTenDogs={topTenDogs} setTopTenDogs={setTopTenDogs} />
-      <TopThreeDogs topTenDogs={topTenDogs} />
-    </div>
+    // <div>
+    //   <DogLeaderboard topTenDogs={topTenDogs} setTopTenDogs={setTopTenDogs} />
+    // </div>
+    <Container>
+      <Row className="top-row">
+        <Col className="top-row-item">
+          <DogHeadToHead setTopTenDogs={setTopTenDogs} />
+        </Col>
+        <Col className="top-row-item">
+          {" "}
+          <DogLeaderboard
+            topTenDogs={topTenDogs}
+            setTopTenDogs={setTopTenDogs}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <TopThreeDogs topTenDogs={topTenDogs} />
+      </Row>
+    </Container>
   );
 }
 
