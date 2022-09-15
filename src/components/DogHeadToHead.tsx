@@ -25,6 +25,10 @@ interface IProps {
     console.log("do something, ANYTHING!", arg1)
   });
 
+  newSocket.on("chatMessage", (arg1) => {
+    console.log("chat messages has been received", arg1);
+  })
+
 const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 
 export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
@@ -91,8 +95,17 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
     setTotalVotes(numberOfVotes.totalVotes);
   }
 
+  const handleSocketClick = () => {
+
+    newSocket.emit("squirrel!", Math.random());
+    console.log("I have been clicked!", new Date());
+  }
+
+  
+
   return (
     <div>
+      <button onClick={handleSocketClick}>Send Socket io Message</button>
       <h1>Pick your favourite dog!</h1>
       <img
         className="dog-image"
