@@ -50,6 +50,22 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
     }
   };
 
+  const changeImageForBreed = async (breed: string, index: number) => {
+    const response = await fetch(`${serverUrl}/random/${breed}`);
+
+    const newDogImage = await response.json();
+
+    const finalRandomImage = newDogImage.image;
+
+    const updateImageAgain: [IDog, IDog] = [...dogComparer];
+
+    updateImageAgain[index].image = finalRandomImage;
+
+    setDogComparer(updateImageAgain);
+
+    console.log(updateImageAgain);
+  };
+
   async function getNumberOfVotes(): Promise<void> {
     const numberOfVotes: { totalVotes: number } = (
       await axios.get(`${serverUrl}/totalVotes`)
@@ -65,6 +81,7 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
         className="dog-image"
         src={dogComparer[0].image}
         alt={`Dog of breed ${dogComparer[0].breed}`}
+        onClick={async () => await changeImageForBreed(dogComparer[0].breed, 0)}
       />
       <button
         onClick={async () => {
@@ -82,6 +99,7 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
         className="dog-image"
         src={dogComparer[1].image}
         alt={`Dog of breed ${dogComparer[1].breed}`}
+        onClick={async () => await changeImageForBreed(dogComparer[1].breed, 1)}
       />
       <button
         onClick={async () => {
