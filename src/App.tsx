@@ -5,6 +5,7 @@ import TopThreeDogs from "./components/TopThreeDogs";
 import DogHeadToHead from "./components/DogHeadToHead";
 import getDogsFromServer from "./utils/getDogsFromServer";
 
+
 function App(): JSX.Element {
   const [topTenDogs, setTopTenDogs] = useState<IDog[]>([]);
 
