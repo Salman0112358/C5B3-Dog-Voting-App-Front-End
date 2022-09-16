@@ -1,9 +1,9 @@
-import DogLeaderboard from "./components/DogLeaderboard";
 import { useEffect, useState } from "react";
 import { IDog } from "./utils/types";
 import TopThreeDogs from "./components/TopThreeDogs";
 import DogHeadToHead from "./components/DogHeadToHead";
 import getDogsFromServer from "./utils/getDogsFromServer";
+import FancyLeaderBoard from "./components/FancyLeaderBoard/FancyLeaderBoard";
 /// boot strap grid
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -38,6 +38,7 @@ function App(): JSX.Element {
   }, []);
 
   return (
+   
     <Container>
       <Row className="top-row">
         <Col className="top-row-item">
@@ -45,10 +46,14 @@ function App(): JSX.Element {
         </Col>
         <Col className="top-row-item">
           {" "}
-          <DogLeaderboard
+          <FancyLeaderBoard
+        topTenDogs={topTenDogs}
+        setTopTenDogs={setTopTenDogs}
+       />
+          {/* <DogLeaderboard
             topTenDogs={topTenDogs}
             setTopTenDogs={setTopTenDogs}
-          />
+          /> */}
         </Col>
       </Row>
       <Row>

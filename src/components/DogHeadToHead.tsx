@@ -4,6 +4,7 @@ import placeholderDog from "../utils/placeholderDog";
 import serverUrl from "../utils/serverUrl";
 import axios from "axios";
 import getDogsFromServer from "../utils/getDogsFromServer";
+import '../components/FancyDogPictureFrame/FancyDogPictureFrame.scss'
 
 interface IProps {
   setTopTenDogs: React.Dispatch<React.SetStateAction<IDog[]>>;
@@ -75,15 +76,24 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
   }
 
   return (
-    <div>
-      <h1>Pick your favourite dog!</h1>
-      <img
-        className="dog-image"
+
+    <>
+    <h1>Pick your favourite dog!</h1>
+    
+    <div className="dog_pictures_container">
+      <div className="wrapper">
+        <div className="card"
+           onClick={async () => await changeImageForBreed(dogComparer[0].breed, 0)}
+        >
+        <img className="dog_image" 
         src={dogComparer[0].image}
         alt={`Dog of breed ${dogComparer[0].breed}`}
-        onClick={async () => await changeImageForBreed(dogComparer[0].breed, 0)}
-      />
-      <button
+        // onClick={async () => await changeImageForBreed(dogComparer[0].breed, 0)}
+        />
+          <div className="info">
+            <h1 style={{textTransform:"capitalize"}}>{dogComparer[0].breed}</h1>
+            <p>Has {dogComparer[0].votes===undefined ? 0 : dogComparer[0].votes } votes so far</p>
+            <button
         onClick={async () => {
           audio.play();
           setVoteCount((state) => state + 1);
@@ -91,17 +101,26 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
           await handleVoteForDog(dogComparer[0].breed);
           await getDogsFromServer(setTopTenDogs);
         }}
-        className="vote"
       >
         vote for {dogComparer[0].breed}
       </button>
-      <img
-        className="dog-image"
+          </div>
+        </div>
+    </div>
+
+    <div className="wrapper">
+        <div className="card"
+         onClick={async () => await changeImageForBreed(dogComparer[1].breed, 1)}
+        >
+        <img 
         src={dogComparer[1].image}
         alt={`Dog of breed ${dogComparer[1].breed}`}
-        onClick={async () => await changeImageForBreed(dogComparer[1].breed, 1)}
-      />
-      <button
+        // onClick={async () => await changeImageForBreed(dogComparer[1].breed, 1)}
+        />
+          <div className="info">
+            <h1 style={{textTransform:"capitalize"}} >{dogComparer[1].breed}</h1>
+            <p>Has {dogComparer[1].votes===undefined ? 0 : dogComparer[1].votes } votes so far</p>
+            <button
         onClick={async () => {
           audio.play();
           setVoteCount((state) => state + 1);
@@ -109,14 +128,22 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
           await handleVoteForDog(dogComparer[1].breed);
           await getDogsFromServer(setTopTenDogs);
         }}
-        className="vote"
       >
         vote for {dogComparer[1].breed}
       </button>
-      <p>
-        You have voted {voteCount} time{voteCount === 1 ? "" : "s"} out of{" "}
-        {totalVotes} total votes
-      </p>
+          </div>
+        </div>
+    </div>      
     </div>
+
+    <div className="current_votes">
+      <h3>
+        You have voted {voteCount} time{voteCount === 1 ? "" : "s"} this session out of{" "}
+        {totalVotes} total votes
+      </h3>
+    </div>
+ 
+
+    </>
   );
 }
