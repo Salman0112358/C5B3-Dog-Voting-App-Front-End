@@ -9,8 +9,6 @@ interface IProps {
   setTopTenDogs: React.Dispatch<React.SetStateAction<IDog[]>>;
 }
 
-
-
 const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
 
 export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
@@ -41,7 +39,6 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
     setStateToTwoRandomDogs();
     getNumberOfVotes();
   }, []);
-
 
   const handleVoteForDog = async (breedOfDog: string) => {
     try {

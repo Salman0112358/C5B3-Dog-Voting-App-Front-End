@@ -11,9 +11,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 //socket
-import io from 'socket.io-client';
+import io from "socket.io-client";
 import serverUrl from "./utils/serverUrl";
-
 
 // newSocket.on("hello", () => {
 //   console.log("we got a message")
@@ -22,7 +21,6 @@ import serverUrl from "./utils/serverUrl";
 // newSocket.on("time", (arg1) => {
 //   console.log("do something, ANYTHING!", arg1)
 // });
-
 
 function App(): JSX.Element {
   const [topTenDogs, setTopTenDogs] = useState<IDog[]>([]);
@@ -34,20 +32,21 @@ function App(): JSX.Element {
     const newSocket = io(`${serverUrl}/`);
     console.log(newSocket);
 
-    const handleNewLeaderboard = (args : any[] ) => {
-      console.log("new leaderboard recieved" , args);
-      setTopTenDogs(args)
-    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const handleNewLeaderboard = (args: any[]) => {
+      console.log("new leaderboard recieved", args);
+      setTopTenDogs(args);
+    };
 
     newSocket.on("chatMessage", handleNewLeaderboard);
     // return a clean up function to be called in the event the component is unmounted
     // The clean up function should disconnect from the socket io server and unregister any listeners
 
     return () => {
-      console.log("unmounting app")
-      newSocket.disconnect()
-      newSocket.off("chatMessage",handleNewLeaderboard)
-    }
+      console.log("unmounting app");
+      newSocket.disconnect();
+      newSocket.off("chatMessage", handleNewLeaderboard);
+    };
   }, []);
 
   useEffect(() => {
