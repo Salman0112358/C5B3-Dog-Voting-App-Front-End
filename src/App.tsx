@@ -22,8 +22,8 @@ function App(): JSX.Element {
   useEffect(() => {
 
     const newSocket = io(`${serverUrl}/`);
-    console.log(newSocket);
-    const handleNewLeaderboard = (args: any[]) => {
+    console.log(newSocket , serverUrl);
+    const handleNewLeaderboard = (args: never[]) => {
       console.log("new leaderboard recieved", args);
       setTopTenDogs(args);
     };
@@ -36,8 +36,6 @@ function App(): JSX.Element {
       newSocket.off("chatMessage", handleNewLeaderboard);
     };
   }, []);
-
-
 
 
   useEffect(() => {
