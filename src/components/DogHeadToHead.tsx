@@ -97,7 +97,7 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
               <h1 style={{ textTransform: "capitalize" }}>
                 {dogComparer[0].breed}
               </h1>
-              <p>
+              <p className="descriptive__text">
                 Has{" "}
                 {dogComparer[0].votes === undefined ? 0 : dogComparer[0].votes}{" "}
                 votes so far
@@ -133,7 +133,7 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
               <h1 style={{ textTransform: "capitalize" }}>
                 {dogComparer[1].breed}
               </h1>
-              <p>
+              <p className="descriptive__text">
                 Has{" "}
                 {dogComparer[1].votes === undefined ? 0 : dogComparer[1].votes}{" "}
                 votes so far
