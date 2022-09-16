@@ -14,18 +14,26 @@
     .dog_pictures_container {
         display: flex;
         flex-direction: row;
-    }
-  
+
+         
   .wrapper {
     display: flex;
     width: 90%;
     justify-content: space-around;
     padding: 1rem 2rem;
   }
+    }
+  
+  // .wrapper {
+  //   display: flex;
+  //   width: 90%;
+  //   justify-content: space-around;
+  //   padding: 1rem 2rem;
+  // }
   
   .card {
-    width: 366px;
-    height: 400px;
+    width: 466px;
+    height: 600px;
     border-radius: 15px;
     padding: 1.5rem;
     background: white;
@@ -107,5 +115,3 @@
     text-align: left;
     padding-top: 1rem;
   }
-
- 
