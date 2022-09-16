@@ -11,7 +11,7 @@ export default function TopThreeDogs({ topTenDogs }: IProps): JSX.Element {
       {topTenDogs.slice(0, 3).map((dog, index) => (
         <div key={dog.dog_id ?? index} className="top_three_labels">
           <p>
-            {dog.breed} {dog.votes}
+            <b>{dog.breed} {dog.votes}</b>
           </p>
           <img
             className="dog-image_top_three"
