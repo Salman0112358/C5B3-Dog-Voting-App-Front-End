@@ -9,8 +9,36 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+
+//socket
+import io from "socket.io-client";
+import serverUrl from "./utils/serverUrl";
+
+
 function App(): JSX.Element {
   const [topTenDogs, setTopTenDogs] = useState<IDog[]>([]);
+
+
+  useEffect(() => {
+
+    const newSocket = io(`${serverUrl}/`);
+    console.log(newSocket);
+    const handleNewLeaderboard = (args: any[]) => {
+      console.log("new leaderboard recieved", args);
+      setTopTenDogs(args);
+    };
+    newSocket.on("chatMessage", handleNewLeaderboard);
+    // return a clean up function to be called in the event the component is unmounted
+    // The clean up function should disconnect from the socket io server and unregister any listeners
+    return () => {
+      console.log("unmounting app");
+      newSocket.disconnect();
+      newSocket.off("chatMessage", handleNewLeaderboard);
+    };
+  }, []);
+
+
+
 
   useEffect(() => {
     getDogsFromServer(setTopTenDogs);
