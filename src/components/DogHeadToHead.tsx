@@ -121,4 +121,3 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
   );
 }
 
-// button should send off to db and increment votes by 1 or create a new breed with a vote of 1.

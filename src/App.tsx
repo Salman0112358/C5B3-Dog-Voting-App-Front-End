@@ -4,7 +4,6 @@ import { IDog } from "./utils/types";
 import TopThreeDogs from "./components/TopThreeDogs";
 import DogHeadToHead from "./components/DogHeadToHead";
 import getDogsFromServer from "./utils/getDogsFromServer";
-
 /// boot strap grid
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -18,9 +17,6 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    // <div>
-    //   <DogLeaderboard topTenDogs={topTenDogs} setTopTenDogs={setTopTenDogs} />
-    // </div>
     <Container>
       <Row className="top-row">
         <Col className="top-row-item">
