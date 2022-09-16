@@ -1,5 +1,5 @@
-import React from 'react'
-import './FancyLeaderBoards.scss'
+import React from "react";
+import "./FancyLeaderBoards.scss";
 import { IDog } from "../../utils/types";
 
 interface IProps {
@@ -8,19 +8,28 @@ interface IProps {
 }
 
 const FancyLeaderBoard = ({
-    topTenDogs,
-    setTopTenDogs,
-  }: IProps) : JSX.Element => {
+  topTenDogs,
+  setTopTenDogs,
+}: IProps): JSX.Element => {
   return (
     <>
-
-<article className="leaderboard">
-  <header>
-
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 511.999 511.999"  xmlSpace="preserve" className="leaderboard__icon">
-      <g>
-        <g>
-          <path d="M466.45,49.374c-7.065-8.308-17.368-13.071-28.267-13.071H402.41v-11.19C402.41,11.266,391.143,0,377.297,0H134.705
+      <article className="leaderboard">
+        <header>
+          <svg
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 511.999 511.999"
+            xmlSpace="preserve"
+            className="leaderboard__icon"
+          >
+            <g>
+              <g>
+                <path
+                  d="M466.45,49.374c-7.065-8.308-17.368-13.071-28.267-13.071H402.41v-11.19C402.41,11.266,391.143,0,377.297,0H134.705
 			c-13.848,0-25.112,11.266-25.112,25.112v11.19H73.816c-10.899,0-21.203,4.764-28.267,13.071
 			c-6.992,8.221-10.014,19.019-8.289,29.624c9.4,57.8,45.775,108.863,97.4,136.872c4.717,11.341,10.059,22.083,16.008,32.091
 			c19.002,31.975,42.625,54.073,68.627,64.76c2.635,26.644-15.094,51.885-41.794,57.9c-0.057,0.013-0.097,0.033-0.153,0.046
@@ -37,12 +46,14 @@ const FancyLeaderBoard = ({
 			c0,58.379-13.406,113.089-37.747,154.049c-23.192,39.03-53.364,60.525-84.956,60.525c-31.597,0-61.771-21.494-84.966-60.523
 			c-24.342-40.961-37.748-95.671-37.748-154.049V25.112c0-0.78,0.634-1.413,1.412-1.413h242.591c0.78,0,1.414,0.634,1.414,1.413
 			V81.803z M451.348,75.192c-6.702,41.208-29.074,78.51-61.569,104.191c8.268-30.283,12.631-63.395,12.631-97.58V60.001h35.773
-			c3.938,0,7.66,1.723,10.214,4.726C450.915,67.688,451.963,71.405,451.348,75.192z" />
-        </g>
-      </g>
-      <g>
-        <g>
-          <path d="M327.941,121.658c-1.395-4.288-5.103-7.414-9.566-8.064l-35.758-5.196l-15.991-32.402
+			c3.938,0,7.66,1.723,10.214,4.726C450.915,67.688,451.963,71.405,451.348,75.192z"
+                />
+              </g>
+            </g>
+            <g>
+              <g>
+                <path
+                  d="M327.941,121.658c-1.395-4.288-5.103-7.414-9.566-8.064l-35.758-5.196l-15.991-32.402
 			c-1.997-4.044-6.116-6.605-10.626-6.605c-4.511,0-8.63,2.561-10.626,6.605l-15.991,32.402l-35.758,5.196
 			c-4.464,0.648-8.172,3.775-9.566,8.065c-1.393,4.291-0.231,8.999,2.999,12.148l25.875,25.221l-6.109,35.613
 			c-0.763,4.446,1.064,8.938,4.714,11.59c3.648,2.651,8.487,3,12.479,0.902L256,190.32l31.982,16.813
@@ -50,27 +61,36 @@ const FancyLeaderBoard = ({
 			l25.875-25.221C328.172,130.658,329.334,125.949,327.941,121.658z M278.064,146.405c-2.793,2.722-4.068,6.644-3.408,10.489
 			l3.102,18.09l-16.245-8.541c-1.725-0.908-3.62-1.36-5.514-1.36c-1.894,0-3.788,0.454-5.514,1.36l-16.245,8.541l3.102-18.09
 			c0.66-3.844-0.615-7.766-3.408-10.489l-13.141-12.81l18.162-2.64c3.859-0.56,7.196-2.985,8.922-6.482l8.123-16.458l8.122,16.458
-			c1.727,3.497,5.062,5.921,8.922,6.482l18.162,2.64L278.064,146.405z" />
-        </g>
-      </g>
-    </svg>
+			c1.727,3.497,5.062,5.921,8.922,6.482l18.162,2.64L278.064,146.405z"
+                />
+              </g>
+            </g>
+          </svg>
 
-    <h1 className="leaderboard__title"><span className="leaderboard__title--top">Dog</span><span className="leaderboard__title--bottom">Leaderboard</span></h1>
-  </header>
-  
-  <main className="leaderboard__profiles">
+          <h1 className="leaderboard__title">
+            <span className="leaderboard__title--top">Dog</span>
+            <span className="leaderboard__title--bottom">Leaderboard</span>
+          </h1>
+        </header>
 
-  {topTenDogs.map((dog,index) => (
+        <main className="leaderboard__profiles">
+          {topTenDogs.map((dog, index) => (
             <article className="leaderboard__profile" key={dog.dog_id}>
-            <img src={dog.image} alt="dog profile" className="leaderboard__picture"/>
-            <span className="leaderboard__name">{index + 1}. {dog.breed}</span>
-            <span className="leaderboard__value">{dog.votes}</span>
+              <img
+                src={dog.image}
+                alt="dog profile"
+                className="leaderboard__picture"
+              />
+              <span className="leaderboard__name">
+                {index + 1}. {dog.breed}
+              </span>
+              <span className="leaderboard__value">{dog.votes}</span>
             </article>
-            ))}
-  </main>
-</article>
+          ))}
+        </main>
+      </article>
     </>
-  )
-}
+  );
+};
 
-export default FancyLeaderBoard
+export default FancyLeaderBoard;

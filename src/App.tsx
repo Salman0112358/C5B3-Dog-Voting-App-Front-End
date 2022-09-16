@@ -38,7 +38,6 @@ function App(): JSX.Element {
   }, []);
 
   return (
-   
     <Container>
       <Row className="top-row">
         <Col className="top-row-item">
@@ -47,9 +46,9 @@ function App(): JSX.Element {
         <Col className="top-row-item">
           {" "}
           <FancyLeaderBoard
-        topTenDogs={topTenDogs}
-        setTopTenDogs={setTopTenDogs}
-       />
+            topTenDogs={topTenDogs}
+            setTopTenDogs={setTopTenDogs}
+          />
           {/* <DogLeaderboard
             topTenDogs={topTenDogs}
             setTopTenDogs={setTopTenDogs}
