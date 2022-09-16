@@ -120,4 +120,3 @@ export default function DogHeadToHead({ setTopTenDogs }: IProps): JSX.Element {
     </div>
   );
 }
-

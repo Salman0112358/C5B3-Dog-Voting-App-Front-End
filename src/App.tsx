@@ -9,20 +9,16 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-
 //socket
 import io from "socket.io-client";
 import serverUrl from "./utils/serverUrl";
 
-
 function App(): JSX.Element {
   const [topTenDogs, setTopTenDogs] = useState<IDog[]>([]);
 
-
   useEffect(() => {
-
     const newSocket = io(`${serverUrl}/`);
-    console.log(newSocket , serverUrl);
+    console.log(newSocket, serverUrl);
     const handleNewLeaderboard = (args: never[]) => {
       console.log("new leaderboard recieved", args);
       setTopTenDogs(args);
@@ -36,7 +32,6 @@ function App(): JSX.Element {
       newSocket.off("chatMessage", handleNewLeaderboard);
     };
   }, []);
-
 
   useEffect(() => {
     getDogsFromServer(setTopTenDogs);
